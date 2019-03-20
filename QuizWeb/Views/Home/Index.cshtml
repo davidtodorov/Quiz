@@ -1,0 +1,16 @@
+﻿@model QuizWeb.Models.QuoteAuthorModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <div class="quiz">
+        <div class="tabs">
+            <div class="tab">Yes/No</div>
+            <div class="tab">Multiple Choise</div>
+        </div>
+        <p>Who Said It</p>
+        @await Html.PartialAsync("_YesNoPartial", Model)
+    </div>
+</div>

@@ -14,6 +14,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Quiz.Data\Quiz.Data.csproj" />
     <ProjectReference Include="..\Quiz.Models\Quiz.Models.csproj" />
+    <ProjectReference Include="..\Quiz.Services.Interfaces\Quiz.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Quiz.Services\Quiz.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

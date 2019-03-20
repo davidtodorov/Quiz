@@ -9,7 +9,7 @@ using Quiz.Data;
 namespace Quiz.Data.Migrations
 {
     [DbContext(typeof(QuizDbContext))]
-    [Migration("20190320005750_Initial")]
+    [Migration("20190320121543_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

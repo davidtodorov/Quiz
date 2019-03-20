@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Quiz.Data;
+using Quiz.Services;
+using Quiz.Services.Interfaces;
 
 namespace QuizWeb
 {
@@ -39,6 +41,10 @@ namespace QuizWeb
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IQuoteService, QuoteService>();
+            services.AddScoped<IQuizService, QuizService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +67,13 @@ namespace QuizWeb
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/");
+            });
         }
     }
 }
