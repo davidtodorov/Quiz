@@ -11,8 +11,8 @@
             <div class="tab">Multiple Choise</div>
         </div>
         <p>Who Said It</p>
-        <p class="quote" id="quote" quoteId="@Model.Quote.Id">@Model.Quote.Text</p>
-        @if (Model.YesNoAuthor != null)
+        <p class="quote" id="quote" quoteId="@Model.QuoteId">@Model.QuoteText</p>
+        @if (Model.YesNoAuthorId != 0)
         {
             @await Html.PartialAsync("_YesNoPartial", Model)
         }

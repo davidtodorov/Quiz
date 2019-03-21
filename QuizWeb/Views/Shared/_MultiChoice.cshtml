@@ -2,7 +2,7 @@
 <div id="multiChoice">
     @foreach (var quoteAuthor in Model.MultiChoiceAuthors)
     {
-        <input type="radio" name="author" authorId="@quoteAuthor.Id" value="@quoteAuthor.Id"/>@quoteAuthor.Name <br/>
+        <input type="radio" name="author" authorId="@quoteAuthor.AuthorId" value="@quoteAuthor.AuthorId"/>@quoteAuthor.AuthorName <br/>
     }
     <input type="submit" name="submit" value="Submit"/>
 </div>

@@ -6,12 +6,10 @@ namespace QuizWeb.Models
 {
     public class QuoteAuthorModel
     {
-        public Quote Quote { get; set; }
-
-        public Author ActualAuthor { get; set; }
-
-        public Author YesNoAuthor { get; set; }
-
-        public List<Author> MultiChoiceAuthors { get; set; }
+        public int QuoteId { get; set; }
+        public string QuoteText { get; set; }
+        public int YesNoAuthorId { get; set; }
+        public string YesNoAuthorName { get; set; }
+        public List<AuthorModel> MultiChoiceAuthors { get; set; }
     }
 }

@@ -26,18 +26,23 @@ namespace QuizWeb.Controllers
             var quote = quizService.GetRandomQuote();
             var viewModel = new QuoteAuthorModel()
             {
-                Quote = quote,
-                ActualAuthor = quote.Author,
+                QuoteId = quote.Id,
+                QuoteText = quote.Text,
             };
 
             if (mode == "yesNo")
             {
                 var randomAuthor = quizService.GetRandomAuthor();
-                viewModel.YesNoAuthor = randomAuthor;
+                viewModel.YesNoAuthorId = randomAuthor.Id;
+                viewModel.YesNoAuthorName = randomAuthor.Name;
             }
             else if (mode == "multiChoice")
             {
-                viewModel.MultiChoiceAuthors = quizService.GetMultiChoiceAuthors(quote.AuthorId);
+                viewModel.MultiChoiceAuthors = quizService.GetMultiChoiceAuthors(quote.AuthorId).Select(x => new AuthorModel()
+                {
+                    AuthorId = x.Id,
+                    AuthorName = x.Name
+                }).ToList();
             }
 
             return View(viewModel);
