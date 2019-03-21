@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
 
     let quoteId = $('#quote').attr('quoteId');
-    let $author = $('#yesNo p');
-    let authorId = $author.attr('authorId');
 
     $('button#yes').on('click', function () {
+        let $author = $('#yesNo p');
+        let authorId = $author.attr('authorId');
 
         $.post("/home/index/",
             {
@@ -20,6 +20,10 @@
     });
 
     $('button#no').on('click', function () {
+
+        let $author = $('#yesNo p');
+        let authorId = $author.attr('authorId');
+
         $.post("/home/index/",
             {
                 Mode: 'yesNo',
@@ -33,8 +37,23 @@
             });
     });
 
-    function _showResult(result)
-    {
+    $('input[name=submit]').on('click', function () {
+        let authorId = $('input[name=author]:checked').attr('authorId');
+        $.post("/home/index/",
+            {
+                Mode: 'yesNo',
+                Answer: 'yes',
+                QuoteId: quoteId,
+                AuthorId: authorId,
+            },
+            function (result) {
+                _showResult(result);
+                window.location.replace("/home/index?mode=multiChoice");
+            });
+    });
+
+    function _showResult(result) {
+
         if (result.result === true) {
             alert('Correct! The right answer is ' + result.correctAnswer);
         } else {
