@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Quiz.Services.Interfaces;
 using QuizWeb.Models;
 
@@ -25,21 +26,54 @@ namespace QuizWeb.Controllers
             var quote = quizService.GetRandomQuote();
             var viewModel = new QuoteAuthorModel()
             {
-                Quote = quote.Text,
-                ActualAuthor = quote.Author.Name,
+                Quote = quote,
+                ActualAuthor = quote.Author,
             };
 
             if (mode == "yesNo")
             {
                 var randomAuthor = quizService.GetRandomAuthor();
-                viewModel.YesNoAuthor = randomAuthor.Name;
-            } 
+                viewModel.YesNoAuthor = randomAuthor;
+            }
             else if (mode == "multiChoice")
             {
                 viewModel.MultiChoiceAuthors = quizService.GetMultiChoiceAuthors(quote.AuthorId);
             }
-            
+
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Index(string mode, string answer, int quoteId, int authorId)
+        {
+
+            if (mode == "yesNo")
+            {
+                var quote = quoteService.GetQuote(quoteId);
+
+                if (quote.AuthorId == authorId)
+                {
+                    if (answer == "yes")
+                    {
+                        return this.Json(new { Result = true, CorrectAnswer = quote.Author.Name });
+
+                    }
+
+                    return this.Json(new { Result = false, CorrectAnswer = quote.Author.Name });
+                }
+                else
+                {
+                    if (answer == "no")
+                    {
+                        return this.Json(new { Result = true, CorrectAnswer = quote.Author.Name });
+                    }
+                    else
+                    {
+                        return this.Json(new { Result = false, CorrectAnswer = quote.Author.Name });
+                    }
+                }
+            }
+            return null;
         }
     }
 }

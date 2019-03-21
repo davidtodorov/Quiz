@@ -53,7 +53,7 @@ namespace Quiz.Services
                 dbAuthors.Remove(randomAuthor);
                 list.Add(randomAuthor);
             }
-            return list;
+            return list.OrderBy(a => Guid.NewGuid()).ToList();
         }
     }
 }
