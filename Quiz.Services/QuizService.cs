@@ -35,7 +35,7 @@ namespace Quiz.Services
 
         public Author GetRandomAuthor()
         {
-            var authorsCount = quoteService.GetAllQuotes().Count;
+            var authorsCount = authorService.GetAuthors().Count;
             var authorId = this.randomGenerator.Next(1, authorsCount + 1);
             return authorService.GetAuthor(authorId);
         }
