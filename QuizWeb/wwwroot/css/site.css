@@ -81,8 +81,22 @@ p.quote {
     padding: 15px;
     background: #F2489A;
     border-radius: 0.5rem;
-    margin: 10px 45px;
+    margin: 15px 45px;
     color: #fafafa;
+}
+
+#yesNo p {
+    text-align: center;
+}
+
+#yesNo div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#multiChoice div:first-child > div {
+    margin: 6px;
+    margin-left: 15px;
 }
 
 /* Hide/rearrange for smaller screens */

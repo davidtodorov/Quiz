@@ -1,6 +1,22 @@
 ﻿$(document).ready(function () {
 
+    if (document.getElementById('yesNo')) {
+        $('#multiChoiceTab').removeClass('active');
+        $('#yesNoTab').addClass('active');
+    } else if (document.getElementById('multiChoice')) {
+        $('#yesNoTab').removeClass('active');
+        $('#multiChoiceTab').addClass('active');
+    }
+
     let quoteId = $('#quote').attr('quoteId');
+
+    $('#yesNoTab').on('click', function () {
+        window.location.replace("/home/index?mode=yesNo");
+    });
+
+    $('#multiChoiceTab').on('click', function() {
+        window.location.replace("/home/index?mode=multiChoice");
+    })
 
     $('button#yes').on('click', function () {
         let $author = $('#yesNo p');

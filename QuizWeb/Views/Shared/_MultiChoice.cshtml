@@ -1,8 +1,13 @@
 ﻿@model QuizWeb.Models.QuoteAuthorModel
 <div id="multiChoice">
-    @foreach (var quoteAuthor in Model.MultiChoiceAuthors)
-    {
-        <input type="radio" name="author" authorId="@quoteAuthor.AuthorId" value="@quoteAuthor.AuthorId"/>@quoteAuthor.AuthorName <br/>
-    }
+    <div>
+        @foreach (var quoteAuthor in Model.MultiChoiceAuthors)
+        {
+            <div>
+                <input type="radio" name="author" authorId="@quoteAuthor.AuthorId" value="@quoteAuthor.AuthorId"/>@quoteAuthor.AuthorName
+                <br/>
+            </div>
+        }
+    </div>
     <input type="submit" name="submit" value="Submit"/>
 </div>
