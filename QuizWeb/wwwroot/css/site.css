@@ -43,6 +43,7 @@ body {
     border-radius: 1rem;
     border:1px solid black;
     padding:2rem;
+    background: #fafafa;
 }
 
 .tabs {
@@ -74,7 +75,8 @@ body {
 
 .quiz p:nth-child(2){
     margin-top:7px;
-    color: #777;
+    color: #888;
+    font-weight: bold
 }
 
 p.quote {
@@ -97,6 +99,29 @@ p.quote {
 #multiChoice div:first-child > div {
     margin: 6px;
     margin-left: 15px;
+}
+
+label {
+    background: grey;
+    color: white;
+    border-radius: 0.5rem;
+    padding-left: 6px;
+    width: 200px;
+    margin: 5px;
+}
+
+#yes {
+    background: #03c303;
+    border: 0px;
+    border-radius: 0.5rem;
+    padding: 5px 20px;
+}
+
+#no {
+    background: #ff0000c4;
+    border: 0px;
+    border-radius: 0.5rem;
+    padding: 5px 20px;
 }
 
 /* Hide/rearrange for smaller screens */

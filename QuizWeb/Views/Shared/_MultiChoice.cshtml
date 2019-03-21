@@ -3,10 +3,12 @@
     <div>
         @foreach (var quoteAuthor in Model.MultiChoiceAuthors)
         {
-            <div>
-                <input type="radio" name="author" authorId="@quoteAuthor.AuthorId" value="@quoteAuthor.AuthorId"/>@quoteAuthor.AuthorName
-                <br/>
-            </div>
+            <label>
+                <input type="radio" name="author" authorId="@quoteAuthor.AuthorId" value="@quoteAuthor.AuthorId"/>
+                <i style="margin-left: 15px;">@quoteAuthor.AuthorName</i>
+            </label>
+            <br/>
+
         }
     </div>
     <input type="submit" name="submit" value="Submit"/>
